@@ -96,9 +96,9 @@ public class SuperGrowthAccelerator extends Block {
                 }
 
                 else if(plant_block instanceof BlockCactus) {
-                    BlockCactus reed = (BlockCactus) plant_block;
+                    BlockCactus cactus = (BlockCactus) plant_block;
                     int i;
-                    for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == reed; ++i);
+                    for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == cactus; ++i);
                     if (i < 4) {
                         world.setBlockState(plant_pos.up(i), Blocks.cactus.getDefaultState());
                     }
