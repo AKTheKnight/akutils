@@ -3,6 +3,7 @@ package com.aktheknight.akutils.items;
 import com.aktheknight.akutils.ConfigHandler;
 import com.aktheknight.akutils.util.FixedRandom;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.block.IGrowable;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,7 +40,6 @@ public class SuperMeal extends Item {
 
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        --stack.stackSize;
         if (!world.isRemote) {
             BlockPos growPos;
             IGrowable plant;
@@ -49,12 +49,19 @@ public class SuperMeal extends Item {
                     growPos = pos.add(x, 0, z);
                     Block plantBlock = world.getBlockState(growPos).getBlock();
                     if (plantBlock instanceof IGrowable) {
+                        --stack.stackSize;
                         plant = (IGrowable) plantBlock;
-                        if (plant.canGrow(world, growPos, world.getBlockState(growPos), false)) {
-                            plant.grow(world, new Random(123), growPos, world.getBlockState(growPos));
+                        if (plant instanceof BlockSapling) {
+                            plant.grow(world, this.fixedRandom, growPos, world.getBlockState(growPos));
+                            plant.grow(world, this.fixedRandom, growPos, world.getBlockState(growPos));
                         }
                         else {
-                            plantBlock.updateTick(world, growPos, world.getBlockState(growPos), this.fixedRandom);
+                            if (plant.canGrow(world, growPos, world.getBlockState(growPos), false)) {
+                                plant.grow(world, new Random(123), growPos, world.getBlockState(growPos));
+                            }
+                            else {
+                                plantBlock.updateTick(world, growPos, world.getBlockState(growPos), this.fixedRandom);
+                            }
                         }
                     }
                 }
