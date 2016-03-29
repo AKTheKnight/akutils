@@ -7,6 +7,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -76,10 +77,30 @@ public class SuperGrowthAccelerator extends Block {
                     }
                 }
 
+                /*
                 //Cactus and Sugar Canes
                 else if (plant_block instanceof BlockReed || plant_block instanceof BlockCactus) {
                     for (int l = 1; !world.isAirBlock(pos_above.up()) && l < 3; l++) {
-                        world.getBlockState(pos_above.up(l)).getBlock().updateTick(world, pos_above.up(l), state, this.fixedRandom);
+                        world.getBlockState(pos_above.up(l)).getBlock().updateTick(world, pos_above.up(l), world.getBlockState(pos_above.up(l)), this.fixedRandom);
+                    }
+                }
+                */
+
+                else if(plant_block instanceof BlockReed) {
+                    BlockReed reed = (BlockReed) plant_block;
+                    int i;
+                    for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == reed; ++i);
+                    if (i < 4) {
+                        world.setBlockState(plant_pos.up(i), Blocks.reeds.getDefaultState());
+                    }
+                }
+
+                else if(plant_block instanceof BlockCactus) {
+                    BlockCactus reed = (BlockCactus) plant_block;
+                    int i;
+                    for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == reed; ++i);
+                    if (i < 4) {
+                        world.setBlockState(plant_pos.up(i), Blocks.cactus.getDefaultState());
                     }
                 }
 
