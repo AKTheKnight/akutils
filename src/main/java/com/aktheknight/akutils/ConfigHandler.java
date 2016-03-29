@@ -18,6 +18,7 @@ public class ConfigHandler {
     //Items
     public static int DirtyHoeRadius;
     public static int SuperMealRadius;
+    public static int SuperMealOutputAmount;
 
 
 
@@ -31,6 +32,7 @@ public class ConfigHandler {
 
         DirtyHoeRadius = config.get(CATEGORY_ITEMS, "DirtyHoe radius", 1, "Radius of effect of the DirtyHoe").getInt();
         SuperMealRadius = config.get(CATEGORY_ITEMS, "SuperMeal radius", 2, "Radius of effect of the SuperMeal").getInt();
+        SuperMealOutputAmount = config.get(CATEGORY_ITEMS, "SuperMeal ouput amount", 3, "How many supermeal should the recipe give?").getInt();
 
 		if (config.hasChanged()) {
 			config.save();

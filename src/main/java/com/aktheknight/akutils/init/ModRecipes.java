@@ -1,5 +1,6 @@
 package com.aktheknight.akutils.init;
 
+import com.aktheknight.akutils.ConfigHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -23,7 +24,7 @@ public class ModRecipes {
 		//GameRegistry.addRecipe(new ItemStack(ModItems.shrinkGem), "##", "##", '#', ModItems.shrinkShard);
 		//SuperMeal
 		GameRegistry.addRecipe(
-				new ItemStack(ModItems.superMeal, 3),
+				new ItemStack(ModItems.superMeal, ConfigHandler.SuperMealOutputAmount),
 				"blb",
 				"bgb",
 				"blb",
