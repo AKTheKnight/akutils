@@ -1,0 +1,16 @@
+[
+{
+  "modid": "akutils",
+  "name": "AKUtils",
+  "description": "Adds a bunch of random ideas.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["AKTheKnight"],
+  "credits": "Jared, UntouchedWagons",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

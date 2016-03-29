@@ -1,0 +1,72 @@
+package com.aktheknight.akutils.items;
+
+import com.aktheknight.akutils.ConfigHandler;
+import com.aktheknight.akutils.util.FixedRandom;
+import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+
+import java.util.List;
+import java.util.Random;
+
+public class SuperMeal extends Item {
+    /**
+     * blb
+     * bgb
+     * blb
+     * b: bonemeal
+     * l: lapis
+     * g: gold
+     */
+
+    private FixedRandom fixedRandom;
+
+    public SuperMeal() {
+        this.maxStackSize = 64;
+        this.setCreativeTab(CreativeTabs.tabMisc);
+        this.setUnlocalizedName("supermeal");
+        this.fixedRandom = new FixedRandom();
+    }
+
+    @Override
+    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+        --stack.stackSize;
+        if (!world.isRemote) {
+            BlockPos growPos;
+            IGrowable plant;
+            int radius = ConfigHandler.SuperMealRadius;
+            for (int x = -radius; x <= radius; x++) {
+                for (int z = -radius; z <= radius; z++) {
+                    growPos = pos.add(x, 0, z);
+                    Block plantBlock = world.getBlockState(growPos).getBlock();
+                    if (plantBlock instanceof IGrowable) {
+                        plant = (IGrowable) plantBlock;
+                        if (plant.canGrow(world, growPos, world.getBlockState(growPos), false)) {
+                            plant.grow(world, new Random(123), growPos, world.getBlockState(growPos));
+                        }
+                        else {
+                            plantBlock.updateTick(world, growPos, world.getBlockState(growPos), this.fixedRandom);
+                        }
+                    }
+                }
+            }
+            return EnumActionResult.SUCCESS;
+        }
+        return EnumActionResult.FAIL;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        tooltip.add(TextFormatting.AQUA + "No, not a food");
+        tooltip.add(TextFormatting.GOLD + "Bonemeals a 3x3 area (yes it's magic)");
+    }
+}
