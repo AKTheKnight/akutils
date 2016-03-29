@@ -28,6 +28,7 @@ public class TestingStick extends Item {
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		//System.out.println("Testing");
 		if (!world.isRemote) {
+			System.out.println(pos + "   :   " + world.getBlockState(pos).getBlock() + "   :   " + world.getBlockState(pos));
 			if (player.isSneaking()) {
 				IBlockState b = world.getBlockState(pos);
 				Block bc = b.getBlock();
