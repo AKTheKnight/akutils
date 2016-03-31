@@ -75,19 +75,27 @@ public class SuperMeal extends Item {
                     if(plantBlock instanceof BlockReed) {
                         numGrowable++;
                         BlockReed reed = (BlockReed) plantBlock;
-                        int i;
-                        for(i = 1; world.getBlockState(growPos.up(i)).getBlock() == reed; ++i);
-                        if (i < 4) {
-                            world.setBlockState(growPos.up(i), Blocks.reeds.getDefaultState());
+                        int down;
+                        for(down = 1; world.getBlockState(growPos.down(down)).getBlock() == reed; down++);
+                        if (down < 4) {
+                            int up;
+                            for(up = 0; world.getBlockState(growPos.up(up + 1)).getBlock() == reed; up++);
+                            if ((up + down) < 4) {
+                                world.setBlockState(growPos.up(up + 1), Blocks.reeds.getDefaultState());
+                            }
                         }
                     }
                     if(plantBlock instanceof BlockCactus) {
                         numGrowable++;
                         BlockCactus reed = (BlockCactus) plantBlock;
-                        int i;
-                        for(i = 1; world.getBlockState(growPos.up(i)).getBlock() == reed; ++i);
-                        if (i < 4) {
-                            world.setBlockState(growPos.up(i), Blocks.cactus.getDefaultState());
+                        int down;
+                        for(down = 1; world.getBlockState(growPos.down(down)).getBlock() == reed; down++);
+                        if (down < 4) {
+                            int up;
+                            for(up = 0; world.getBlockState(growPos.up(up + 1)).getBlock() == reed; up++);
+                            if ((up + down) < 4) {
+                                world.setBlockState(growPos.up(up + 1), Blocks.cactus.getDefaultState());
+                            }
                         }
                     }
                 }
