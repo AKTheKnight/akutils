@@ -49,12 +49,10 @@ public class SuperMeal extends Item {
                 for (int z = -radius; z <= radius; z++) {
                     growPos = pos.add(x, 0, z);
                     plantBlock = world.getBlockState(growPos).getBlock();
-                    System.out.println(growPos + "  :  " + plantBlock.getRegistryName());
                     if (plantBlock instanceof IGrowable) {
                         numGrowable++;
                         plant = (IGrowable) plantBlock;
                         if (plantBlock instanceof BlockSapling) {
-                            System.out.println("sapling");
                             for(int i = 0; i < 2; i ++) {
                                 if (world.getBlockState(growPos).getBlock() == plantBlock) {
                                     plant.grow(world, this.fixedRandom, growPos, world.getBlockState(growPos));
@@ -66,7 +64,6 @@ public class SuperMeal extends Item {
                                     }
                                 }
                             }
-                            System.out.println("given up on tree");
                         }
                         if (plant.canGrow(world, growPos, world.getBlockState(growPos), false)) {
                             plant.grow(world, new Random(123), growPos, world.getBlockState(growPos));
@@ -77,7 +74,6 @@ public class SuperMeal extends Item {
                     }
                     if(plantBlock instanceof BlockReed) {
                         numGrowable++;
-                        System.out.println("reed");
                         BlockReed reed = (BlockReed) plantBlock;
                         int i;
                         for(i = 1; world.getBlockState(growPos.up(i)).getBlock() == reed; ++i);
@@ -87,7 +83,6 @@ public class SuperMeal extends Item {
                     }
                     if(plantBlock instanceof BlockCactus) {
                         numGrowable++;
-                        System.out.println("cactus");
                         BlockCactus reed = (BlockCactus) plantBlock;
                         int i;
                         for(i = 1; world.getBlockState(growPos.up(i)).getBlock() == reed; ++i);
