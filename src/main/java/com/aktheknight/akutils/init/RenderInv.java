@@ -13,6 +13,8 @@ public class RenderInv {
 //		InventoryBlockRender(ModBlocks.demoBlock, "demoBlock");
         InventoryBlockRender(ModBlocks.growthAccelerator, "growthaccelerator");
         InventoryBlockRender(ModBlocks.superGrowthAccelerator, "supergrowthaccelerator");
+
+        InventoryBlockRender(ModBlocks.levitator, "levitator");
 		
 //		InventoryItemRender(ModItems.demoItem, "demoItem");
         InventoryItemRender(ModItems.testingStick, "testingstick");
