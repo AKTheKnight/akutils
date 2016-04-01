@@ -28,13 +28,11 @@ public class GrowthAccelerator extends Block {
      * b: stone
      */
 
-    private StemFixedRandom stemRandom;
     private FixedRandom fixedRandom;
 
     public GrowthAccelerator() {
         super(Material.rock);
 
-        this.stemRandom = new StemFixedRandom();
         this.fixedRandom = new FixedRandom();
 
         this.setTickRandomly(true);
@@ -45,7 +43,7 @@ public class GrowthAccelerator extends Block {
     }
 
     @Override
-    public void randomTick(World world, BlockPos pos, IBlockState state, Random prng) {
+    public void randomTick(World world, BlockPos pos, IBlockState state, Random rand) {
         //System.out.println("Random Tick " + pos.toString());
 
         BlockPos pos_above = pos.up();
@@ -73,10 +71,10 @@ public class GrowthAccelerator extends Block {
             BlockStem stem = (BlockStem)plant_block;
             if (BlockStem.getStateId(world.getBlockState(plant_pos)) >= 7) {
                 if (stem.canGrow(world, plant_pos, world.getBlockState(plant_pos), false)) {
-                    stem.grow(world, this.stemRandom, plant_pos, world.getBlockState(plant_pos));
+                    stem.grow(world, rand, plant_pos, world.getBlockState(plant_pos));
                 }
                 else {
-                    plant_block.updateTick(world, plant_pos, world.getBlockState(plant_pos), this.stemRandom);
+                    plant_block.updateTick(world, plant_pos, world.getBlockState(plant_pos), rand);
                 }
             }
             else {

@@ -25,13 +25,11 @@ public class SuperGrowthAccelerator extends Block {
      * m: super meal
      */
 
-    private StemFixedRandom stemRandom;
     private FixedRandom fixedRandom;
 
     public SuperGrowthAccelerator() {
         super(Material.rock);
 
-        this.stemRandom = new StemFixedRandom();
         this.fixedRandom = new FixedRandom();
 
         this.setTickRandomly(true);
@@ -42,7 +40,7 @@ public class SuperGrowthAccelerator extends Block {
     }
 
     @Override
-    public void randomTick(World world, BlockPos pos, IBlockState state, Random prng) {
+    public void randomTick(World world, BlockPos pos, IBlockState state, Random rand) {
         //System.out.println("Random Tick " + pos.toString());
 
         BlockPos pos_above = pos.up();
@@ -70,7 +68,7 @@ public class SuperGrowthAccelerator extends Block {
                 //Melon and Pumpkin stems
                 if (plant_block instanceof BlockStem) {
                     if (BlockStem.getStateId(world.getBlockState(pos_above.up())) >= 7) {
-                        plant_block.updateTick(world, plant_pos, state, this.stemRandom);
+                        plant_block.updateTick(world, plant_pos, state, rand);
                     }
                     else {
                         plant_block.updateTick(world, plant_pos, state, this.fixedRandom);
