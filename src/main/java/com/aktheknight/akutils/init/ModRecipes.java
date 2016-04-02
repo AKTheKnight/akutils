@@ -75,5 +75,17 @@ public class ModRecipes {
                 'g', ModItems.superMeal,
                 's', Items.stick
         );
+
+		//Levitato
+		GameRegistry.addRecipe(
+                new ItemStack(ModBlocks.levitator),
+                "sls",
+                "sps",
+                "ses",
+                's', new ItemStack(Blocks.stone, 1, 0),
+                'l', Blocks.slime_block,
+                'p', Blocks.piston,
+                'e', Items.ender_pearl
+        );
 	}
 }

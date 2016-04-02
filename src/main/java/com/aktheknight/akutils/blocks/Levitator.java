@@ -17,6 +17,15 @@ import java.util.List;
  * Created by alex_ on 31/03/2016.
  */
 public class Levitator extends Block implements ITileEntityProvider {
+    /**
+     * sls
+     * sps
+     * ses
+     * s stone
+     * l slime block
+     * p piston
+     * e enderpearl
+     */
 
     public Levitator() {
         super(Material.rock);
