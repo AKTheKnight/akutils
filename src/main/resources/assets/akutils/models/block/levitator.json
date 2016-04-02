@@ -1,6 +1,12 @@
 {
 	"parent": "block/cube_all",
 	"textures": {
-		"all": "akutils:blocks/levitator"
+      "particle": "akutils:blocks/levitator_side",
+      "down": "akutils:blocks/levitator_down",
+      "up": "akutils:blocks/levitator_up",
+      "east": "akutils:blocks/levitator_side",
+      "west": "akutils:blocks/levitator_side",
+      "north": "akutils:blocks/levitator_side",
+      "south": "akutils:blocks/levitator_side"
 	}
 }
