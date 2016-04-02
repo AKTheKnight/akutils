@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 public class AKUtils {
 	public static final String MODID = "akutils";
 	static final String MODNAME = "AKUtils";
-	static final String VERSION = "1.9-1.1.0";
+	static final String VERSION = "1.9-1.2.1";
 	
 	@Mod.Instance
 	public static AKUtils instance;
