@@ -17,7 +17,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-version = "1.9-1.2.2"
+version = "1.9-1.2.3"
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
@@ -32,6 +32,9 @@ minecraft {
     runDir = "run"
 
     mappings = "snapshot_20160312"
+
+    replace "@VERSION@", project.version
+    replaceIn "AKUtils.java"
 }
 
 dependencies {

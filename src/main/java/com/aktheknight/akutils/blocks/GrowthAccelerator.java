@@ -68,22 +68,23 @@ public class GrowthAccelerator extends Block {
         IBlockState plant_state;
         Block plant_block;
 
-        for (int x = -radius; x <= radius; x++) {
-            for (int z = -radius; z <= radius; z++) {
-                plant_pos = centre.add(x, 0, z);
-                plant_state = world.getBlockState(plant_pos);
-                plant_block = plant_state.getBlock();
+        try {
+            for (int x = -radius; x <= radius; x++) {
+                for (int z = -radius; z <= radius; z++) {
+                    plant_pos = centre.add(x, 0, z);
+                    plant_state = world.getBlockState(plant_pos);
+                    plant_block = plant_state.getBlock();
 
 
-                //Melon and Pumpkin stems
-                if (plant_block instanceof BlockStem) {
-                    if (BlockStem.getStateId(world.getBlockState(pos_above.up())) >= 7) {
-                        plant_block.updateTick(world, plant_pos, state, rand);
+                    //Melon and Pumpkin stems
+                    if (plant_block instanceof BlockStem) {
+                        if (BlockStem.getStateId(world.getBlockState(pos_above.up())) >= 7) {
+                            plant_block.updateTick(world, plant_pos, world.getBlockState(plant_pos), rand);
+                        }
+                        else {
+                            plant_block.updateTick(world, plant_pos, world.getBlockState(plant_pos), this.fixedRandom);
+                        }
                     }
-                    else {
-                        plant_block.updateTick(world, plant_pos, state, this.fixedRandom);
-                    }
-                }
 
                 /*
                 //Cactus and Sugar Canes
@@ -94,34 +95,38 @@ public class GrowthAccelerator extends Block {
                 }
                 */
 
-                else if(plant_block instanceof BlockReed) {
-                    BlockReed reed = (BlockReed) plant_block;
-                    int i;
-                    for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == reed; ++i);
-                    if (i < 4) {
-                        world.setBlockState(plant_pos.up(i), Blocks.reeds.getDefaultState());
+                    else if(plant_block instanceof BlockReed) {
+                        BlockReed reed = (BlockReed) plant_block;
+                        int i;
+                        for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == reed; ++i);
+                        if (i < 4) {
+                            world.setBlockState(plant_pos.up(i), Blocks.reeds.getDefaultState());
+                        }
                     }
-                }
 
-                else if(plant_block instanceof BlockCactus) {
-                    BlockCactus cactus = (BlockCactus) plant_block;
-                    int i;
-                    for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == cactus; ++i);
-                    if (i < 4) {
-                        world.setBlockState(plant_pos.up(i), Blocks.cactus.getDefaultState());
+                    else if(plant_block instanceof BlockCactus) {
+                        BlockCactus cactus = (BlockCactus) plant_block;
+                        int i;
+                        for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == cactus; ++i);
+                        if (i < 4) {
+                            world.setBlockState(plant_pos.up(i), Blocks.cactus.getDefaultState());
+                        }
                     }
-                }
 
-                else if (plant_block instanceof IPlantable) {
-                    IGrowable plant = (IGrowable) plant_block;
-                    if (plant.canGrow(world, plant_pos, world.getBlockState(plant_pos), false)) {
-                        plant.grow(world, new Random(123), plant_pos, world.getBlockState(plant_pos));
-                    }
-                    else {
-                        plant_block.updateTick(world, plant_pos, world.getBlockState(plant_pos), this.fixedRandom);
+                    else if (plant_block instanceof IPlantable) {
+                        IGrowable plant = (IGrowable) plant_block;
+                        if (plant.canGrow(world, plant_pos, world.getBlockState(plant_pos), false)) {
+                            plant.grow(world, new Random(123), plant_pos, world.getBlockState(plant_pos));
+                        }
+                        else {
+                            plant_block.updateTick(world, plant_pos, world.getBlockState(plant_pos), this.fixedRandom);
+                        }
                     }
                 }
             }
+        }
+        catch (Exception e) {
+            //ignore
         }
     }
 
