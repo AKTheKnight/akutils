@@ -1,5 +1,7 @@
 package com.aktheknight.akutils;
 
+import com.aktheknight.akutils.util.AKUtilsCreativeTab;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -18,6 +20,8 @@ public class AKUtils {
 	
 	@Mod.Instance
 	public static AKUtils instance;
+
+	public static CreativeTabs akUtilsTab = new AKUtilsCreativeTab(CreativeTabs.getNextID(), "akutils");
 	
 	static Logger LOGGER = LogManager.getLogger(MODID);
 	

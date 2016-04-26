@@ -1,5 +1,6 @@
 package com.aktheknight.akutils.items;
 
+import com.aktheknight.akutils.AKUtils;
 import com.aktheknight.akutils.ConfigHandler;
 import com.aktheknight.akutils.util.FixedRandom;
 import net.minecraft.block.*;
@@ -32,7 +33,7 @@ public class SuperMeal extends Item {
 
     public SuperMeal() {
         this.maxStackSize = 64;
-        this.setCreativeTab(CreativeTabs.tabMisc);
+        this.setCreativeTab(AKUtils.akUtilsTab);
         this.setUnlocalizedName("supermeal");
         this.fixedRandom = new FixedRandom();
     }

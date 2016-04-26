@@ -1,5 +1,6 @@
 package com.aktheknight.akutils.blocks;
 
+import com.aktheknight.akutils.AKUtils;
 import com.aktheknight.akutils.ConfigHandler;
 import com.aktheknight.akutils.util.FixedRandom;
 import net.minecraft.block.*;
@@ -40,7 +41,7 @@ public class GrowthAccelerator extends Block {
         this.setTickRandomly(true);
         this.setHardness(2F);
         this.setStepSound(SoundType.STONE);
-        this.setCreativeTab(CreativeTabs.tabMisc);
+        this.setCreativeTab(AKUtils.akUtilsTab);
 
         this.setUnlocalizedName("growthaccelerator");
         getRadius();

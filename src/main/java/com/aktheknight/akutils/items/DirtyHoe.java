@@ -1,6 +1,8 @@
 package com.aktheknight.akutils.items;
 
+import com.aktheknight.akutils.AKUtils;
 import com.aktheknight.akutils.ConfigHandler;
+import com.aktheknight.akutils.util.AKUtilsCreativeTab;
 import net.minecraft.block.*;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +22,7 @@ public class DirtyHoe extends Item {
 
     public DirtyHoe() {
         this.setMaxStackSize(1);
-        this.setCreativeTab(CreativeTabs.tabTools);
+        this.setCreativeTab(AKUtils.akUtilsTab);
         this.setUnlocalizedName("dirtyhoe");
     }
 

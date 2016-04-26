@@ -1,5 +1,6 @@
 package com.aktheknight.akutils.items;
 
+import com.aktheknight.akutils.AKUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +21,7 @@ public class TestingStick extends Item {
 	
 	public TestingStick() {
 		this.maxStackSize = 1;
-		this.setCreativeTab(CreativeTabs.tabMisc);
+		this.setCreativeTab(AKUtils.akUtilsTab);
 		this.setUnlocalizedName("testingstick");
 	}
 	

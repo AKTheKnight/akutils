@@ -1,11 +1,13 @@
 package com.aktheknight.akutils.init;
 
+import com.aktheknight.akutils.AKUtils;
 import com.aktheknight.akutils.items.DirtyHoe;
 import com.aktheknight.akutils.items.SuperMeal;
 import com.aktheknight.akutils.items.TestingStick;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
@@ -21,12 +23,16 @@ public class ModItems {
 	public static void init() {
 		
 		testingStick = new TestingStick();
-		GameRegistry.registerItem(testingStick, "testingstick");
+		registerItem(testingStick, "testingstick");
 
         superMeal = new SuperMeal();
-        GameRegistry.registerItem(superMeal, "supermeal");
+        registerItem(superMeal, "supermeal");
 
         dirtyHoe = new DirtyHoe();
-        GameRegistry.registerItem(dirtyHoe, "dirtyhoe");
+        registerItem(dirtyHoe, "dirtyhoe");
+	}
+
+	static void registerItem(Item item, String name) {
+		GameRegistry.register(item, new ResourceLocation(AKUtils.MODID + ":" + name));
 	}
 }

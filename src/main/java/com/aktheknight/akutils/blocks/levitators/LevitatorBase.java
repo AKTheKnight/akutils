@@ -1,5 +1,7 @@
-package com.aktheknight.akutils.blocks;
+package com.aktheknight.akutils.blocks.levitators;
 
+import com.aktheknight.akutils.AKUtils;
+import com.aktheknight.akutils.blocks.tileentities.TELevitatorBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -16,7 +18,7 @@ import java.util.List;
 /**
  * Created by alex_ on 31/03/2016.
  */
-public class Levitator extends Block implements ITileEntityProvider {
+public class LevitatorBase extends Block implements ITileEntityProvider {
     /**
      * sls
      * sps
@@ -27,18 +29,18 @@ public class Levitator extends Block implements ITileEntityProvider {
      * e enderpearl
      */
 
-    public Levitator() {
+    public LevitatorBase() {
         super(Material.rock);
-        this.setUnlocalizedName("levitator");
+        this.setUnlocalizedName("levitatorbase");
 
         this.setHardness(2F);
         this.setStepSound(SoundType.STONE);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(AKUtils.akUtilsTab);
     }
 
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
-        return new TileEntityLevitator();
+        return new TELevitatorBase();
     }
 
     @Override
