@@ -72,7 +72,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             configuration = configurations.deployerJars
-            repository(url: "ftp://maven2.aktheknight.co.uk") {
+            repository(url: "ftp://maven2.aktheknight.co.uk/public_html/maven2") {
                 authentication(userName: mavenUser, password: mavenPass)
             }
             pom {
@@ -81,7 +81,7 @@ uploadArchives {
                 artifactId = project.archivesBaseName
                 project {
                     name project.archivesBaseName
-                    packaging 'jar'
+                    packaging 'jar'public_html/maven2
                     description 'AKUtils'
                     url 'https://github.com/AKTheKnight/akutils'
                     scm {
