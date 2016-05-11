@@ -81,7 +81,7 @@ uploadArchives {
                 artifactId = project.archivesBaseName
                 project {
                     name project.archivesBaseName
-                    packaging 'jar'public_html/maven2
+                    packaging 'jar'
                     description 'AKUtils'
                     url 'https://github.com/AKTheKnight/akutils'
                     scm {
