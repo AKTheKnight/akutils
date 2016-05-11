@@ -13,6 +13,8 @@ buildscript {
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -58,5 +60,36 @@ processResources
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "ftp://ftp.aktheknight.co.uk/public_html/maven2")
+            pom {
+                groupId = "AKUtils"
+                version = project.version
+                artifactId = project.archivesBaseName
+                project {
+                    name project.archivesBaseName
+                    packaging 'jar'
+                    description 'AKUtils'
+                    url 'https://github.com/AKTheKnight/akutils'
+                    scm {
+                        url 'https://github.com/TechReborn/TechReborn'
+                        connection 'scm:git:git@github.com:TechReborn/TechReborn.git'
+                        developerConnection 'scm:git:git@github.com:TechReborn/TechReborn.git'
+                    }
+                    developers {
+                        developer {
+                            id 'aktheknight'
+                            name 'aktheknight'
+                            roles { role 'developer' }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
