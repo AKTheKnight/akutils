@@ -66,7 +66,9 @@ processResources
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "ftp://ftp.aktheknight.co.uk/public_html/maven2")
+            repository(url: "ftp://ftp.aktheknight.co.uk/public_html/maven2") {
+                authentication(userName: mavenUser, password: mavenPass)
+            }
             pom {
                 groupId = "AKUtils"
                 version = project.version
