@@ -19,10 +19,10 @@ configurations {
 }
 
 dependencies {
-    deployerJars "org.apache.maven.wagon:wagon-ftp:2.2"
+    deployerJars 'org.apache.maven.wagon:wagon-ftp:2.2'
 }
 
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'forge'
 apply plugin: 'maven'
 
 sourceCompatibility = 1.7
@@ -71,7 +71,7 @@ processResources
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "ftp://ftp.aktheknight.co.uk/public_html/maven2") {
+            repository(url: "ftp://maven2.aktheknight.co.uk") {
                 authentication(userName: mavenUser, password: mavenPass)
             }
             pom {
