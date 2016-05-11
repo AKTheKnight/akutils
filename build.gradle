@@ -39,7 +39,12 @@ minecraft {
     replaceIn "AKUtils.java"
 }
 
+configurations {
+    deployerJars
+}
+
 dependencies {
+    deployerJars "org.apache.maven.wagon:wagon-ftp:2.2"
 
 }
 
