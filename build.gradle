@@ -71,6 +71,7 @@ processResources
 uploadArchives {
     repositories {
         mavenDeployer {
+            configuration = configurations.deployerJars
             repository(url: "ftp://maven2.aktheknight.co.uk") {
                 authentication(userName: mavenUser, password: mavenPass)
             }
