@@ -1,8 +1,10 @@
 package com.aktheknight.akutils;
 
+import com.aktheknight.akutils.events.FireChargeUse;
 import com.aktheknight.akutils.init.ModBlocks;
 import com.aktheknight.akutils.init.ModItems;
 import com.aktheknight.akutils.init.ModRecipes;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -34,6 +36,8 @@ public class CommonProxy {
 		LOGGER.log(Level.INFO, "Starting recipes init");
 		ModRecipes.init();
 		LOGGER.log(Level.INFO, "Finished recipes init");
+
+		MinecraftForge.EVENT_BUS.register(new FireChargeUse());
 	/*	LOGGER.log(Level.INFO, "Starting WorldGen setup");
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 1);
 		LOGGER.log(Level.INFO, "Finished WorldGen setup"); */
