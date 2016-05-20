@@ -1,6 +1,6 @@
 package com.aktheknight.akutils.events;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
@@ -10,7 +10,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -62,20 +61,17 @@ public class FireChargeUse {
 
                     List<ItemStack> drops = block.getDrops(e.getWorld(), check, e.getWorld().getBlockState(check), 0);
 
-                    try {
-                        if (!drops.isEmpty()
-                                && drops.size() > 0) {
-                            if (drops.get(0).getItem() instanceof ItemBlock) {
-                                Block place = Block.getBlockFromItem(FurnaceRecipes.instance().getSmeltingResult(drops.get(0)).getItem());
-                                e.getWorld().setBlockState(check, place.getDefaultState());
+                    if (!drops.isEmpty()
+                            && drops.size() > 0) {
+                        if (drops.get(0).getItem() instanceof ItemBlock) {
+                            if (FurnaceRecipes.instance().getSmeltingResult(drops.get(0)) != null) {
+                                if (FurnaceRecipes.instance().getSmeltingResult(drops.get(0)).getItem() instanceof ItemBlock) {
+                                    Block place = Block.getBlockFromItem(FurnaceRecipes.instance().getSmeltingResult(drops.get(0)).getItem());
+                                    e.getWorld().setBlockState(check, place.getDefaultState());
+                                }
                             }
                         }
-                    } catch (Exception ex) {
-                        //TODO
-                        //Ignore for now
                     }
-
-
 /*
                     if (block instanceof BlockSand) {
                         e.getWorld().setBlockState(check, Blocks.glass.getDefaultState());
