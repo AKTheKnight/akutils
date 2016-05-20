@@ -4,7 +4,6 @@ import com.aktheknight.akutils.AKUtils;
 import com.aktheknight.akutils.ConfigHandler;
 import com.aktheknight.akutils.util.FixedRandom;
 import net.minecraft.block.*;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -82,7 +81,7 @@ public class SuperMeal extends Item {
                             int up;
                             for(up = 0; world.getBlockState(growPos.up(up + 1)).getBlock() == reed; up++);
                             if ((up + down) < 4) {
-                                world.setBlockState(growPos.up(up + 1), Blocks.reeds.getDefaultState());
+                                world.setBlockState(growPos.up(up + 1), Blocks.REEDS.getDefaultState());
                             }
                         }
                     }
@@ -95,7 +94,7 @@ public class SuperMeal extends Item {
                             int up;
                             for(up = 0; world.getBlockState(growPos.up(up + 1)).getBlock() == reed; up++);
                             if ((up + down) < 4) {
-                                world.setBlockState(growPos.up(up + 1), Blocks.cactus.getDefaultState());
+                                world.setBlockState(growPos.up(up + 1), Blocks.CACTUS.getDefaultState());
                             }
                         }
                     }

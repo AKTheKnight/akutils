@@ -2,9 +2,7 @@ package com.aktheknight.akutils.items;
 
 import com.aktheknight.akutils.AKUtils;
 import com.aktheknight.akutils.ConfigHandler;
-import com.aktheknight.akutils.util.AKUtilsCreativeTab;
 import net.minecraft.block.*;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -40,13 +38,13 @@ public class DirtyHoe extends Item {
                         if (nextBlock instanceof BlockGrass
                                 && !(world.getBlockState(nextPos.up()).getBlock() instanceof IGrowable)
                                 && !world.isAirBlock(nextPos.up()))
-                            world.setBlockState(nextPos, Blocks.dirt.getDefaultState());
+                            world.setBlockState(nextPos, Blocks.DIRT.getDefaultState());
                         else if (nextBlock instanceof BlockFarmland
                                 && world.isAirBlock(nextPos.up()))
-                            world.setBlockState(nextPos, Blocks.grass.getDefaultState());
+                            world.setBlockState(nextPos, Blocks.GRASS.getDefaultState());
                         else if (nextBlock instanceof BlockDirt
                                 && (world.isAirBlock(nextPos.up())  || world.getBlockState(nextPos.up()).getBlock() instanceof IGrowable))
-                            world.setBlockState(nextPos, Blocks.grass.getDefaultState());
+                            world.setBlockState(nextPos, Blocks.GRASS.getDefaultState());
                     }
                 }
             }

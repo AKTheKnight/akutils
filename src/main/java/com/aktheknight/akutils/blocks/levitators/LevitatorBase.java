@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -30,11 +29,11 @@ public class LevitatorBase extends Block implements ITileEntityProvider {
      */
 
     public LevitatorBase() {
-        super(Material.rock);
+        super(Material.ROCK);
         this.setUnlocalizedName("levitatorbase");
 
         this.setHardness(2F);
-        this.setStepSound(SoundType.STONE);
+        this.setSoundType(SoundType.STONE);
         this.setCreativeTab(AKUtils.akUtilsTab);
     }
 

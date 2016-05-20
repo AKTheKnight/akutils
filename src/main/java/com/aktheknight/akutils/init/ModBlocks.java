@@ -2,8 +2,8 @@ package com.aktheknight.akutils.init;
 
 import com.aktheknight.akutils.AKUtils;
 import com.aktheknight.akutils.blocks.GrowthAccelerator;
-import com.aktheknight.akutils.blocks.levitators.LevitatorBase;
 import com.aktheknight.akutils.blocks.SuperGrowthAccelerator;
+import com.aktheknight.akutils.blocks.levitators.LevitatorBase;
 import com.aktheknight.akutils.blocks.levitators.LevitatorItems;
 import com.aktheknight.akutils.blocks.levitators.LevitatorMobs;
 import com.aktheknight.akutils.blocks.levitators.LevitatorPlayer;

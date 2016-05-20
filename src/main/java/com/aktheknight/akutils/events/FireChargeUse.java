@@ -33,7 +33,7 @@ public class FireChargeUse {
         if (e.getItemStack() == null) {
             return;
         }
-        if (!e.getItemStack().getItem().equals(Items.fire_charge))
+        if (!e.getItemStack().getItem().equals(Items.FIRE_CHARGE))
             return;
         BlockPos pos = e.getPos();
         BlockPos check;
@@ -56,7 +56,7 @@ public class FireChargeUse {
                 }
                 done:
                 if (change
-                        && e.getWorld().getBlockState(check.up()).getBlock().equals(Blocks.air)) {
+                        && e.getWorld().getBlockState(check.up()).getBlock().equals(Blocks.AIR)) {
                     Block block = e.getWorld().getBlockState(check).getBlock();
 
                     List<ItemStack> drops = block.getDrops(e.getWorld(), check, e.getWorld().getBlockState(check), 0);
@@ -88,10 +88,10 @@ public class FireChargeUse {
                     }
                     */
                 }
-                if (rand.nextInt(10) == 1
-                        && e.getWorld().getBlockState(check.up()).getBlock().equals(Blocks.air)
-                        && !e.getWorld().getBlockState(check).getBlock().equals(Blocks.air)) {
-                    e.getWorld().setBlockState(check.up(), Blocks.fire.getDefaultState());
+                if (rand.nextInt(20) == 1
+                        && e.getWorld().getBlockState(check.up()).getBlock().equals(Blocks.AIR)
+                        && !e.getWorld().getBlockState(check).getBlock().equals(Blocks.AIR)) {
+                    e.getWorld().setBlockState(check.up(), Blocks.FIRE.getDefaultState());
                 }
             }
         }

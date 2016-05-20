@@ -1,6 +1,5 @@
 package com.aktheknight.akutils.blocks.levitators;
 
-import com.aktheknight.akutils.blocks.tileentities.TELevitatorItems;
 import com.aktheknight.akutils.blocks.tileentities.TELevitatorMobs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
