@@ -1,6 +1,7 @@
 package com.aktheknight.akutils.init;
 
 import com.aktheknight.akutils.ConfigHandler;
+import com.aktheknight.akutils.recipes.LevitatorRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -75,7 +76,7 @@ public class ModRecipes {
                 's', Items.STICK
         );
 
-		//Levitato
+		//Levitator
 		GameRegistry.addRecipe(
                 new ItemStack(ModBlocks.levitator),
                 "sls",
@@ -86,5 +87,11 @@ public class ModRecipes {
                 'p', Blocks.PISTON,
                 'e', Items.ENDER_PEARL
         );
+
+        GameRegistry.addRecipe(new LevitatorRecipe(Items.PAPER));
+
+        GameRegistry.addRecipe(new LevitatorRecipe(Items.BONE));
+        GameRegistry.addRecipe(new LevitatorRecipe(Items.ARMOR_STAND));
+        GameRegistry.addRecipe(new LevitatorRecipe(Items.ITEM_FRAME));
 	}
 }
