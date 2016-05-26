@@ -3,8 +3,6 @@ package com.aktheknight.akutils;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ConfigHandler {
 	

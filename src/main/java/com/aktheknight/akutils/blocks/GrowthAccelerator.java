@@ -1,12 +1,10 @@
 package com.aktheknight.akutils.blocks;
 
 import com.aktheknight.akutils.AKUtils;
-import com.aktheknight.akutils.ConfigHandler;
 import com.aktheknight.akutils.util.FixedRandom;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -34,13 +32,13 @@ public class GrowthAccelerator extends Block {
     int radius;
 
     public GrowthAccelerator() {
-        super(Material.rock);
+        super(Material.ROCK);
 
         this.fixedRandom = new FixedRandom();
 
         this.setTickRandomly(true);
         this.setHardness(2F);
-        this.setStepSound(SoundType.STONE);
+        this.setSoundType(SoundType.STONE);
         this.setCreativeTab(AKUtils.akUtilsTab);
 
         this.setUnlocalizedName("growthaccelerator");
@@ -101,7 +99,7 @@ public class GrowthAccelerator extends Block {
                         int i;
                         for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == reed; ++i);
                         if (i < 4) {
-                            world.setBlockState(plant_pos.up(i), Blocks.reeds.getDefaultState());
+                            world.setBlockState(plant_pos.up(i), Blocks.REEDS.getDefaultState());
                         }
                     }
 
@@ -110,7 +108,7 @@ public class GrowthAccelerator extends Block {
                         int i;
                         for(i = 1; world.getBlockState(plant_pos.up(i)).getBlock() == cactus; ++i);
                         if (i < 4) {
-                            world.setBlockState(plant_pos.up(i), Blocks.cactus.getDefaultState());
+                            world.setBlockState(plant_pos.up(i), Blocks.REEDS.getDefaultState());
                         }
                     }
 

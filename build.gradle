@@ -10,7 +10,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
     }
 }
 
@@ -28,7 +28,7 @@ apply plugin: 'maven'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-version = "1.9-1.3.1"
+version = "1.9.4-1.3.2"
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
@@ -39,10 +39,10 @@ group= "com.aktheknight.akutils" // http://maven.apache.org/guides/mini/guide-na
 archivesBaseName = "AKUtils"
 
 minecraft {
-    version = "1.9-12.16.1.1907"
+    version = "1.9.4-12.17.0.1909-1.9.4"
     runDir = "run"
 
-    mappings = "snapshot_20160312"
+    mappings = "snapshot_20160520"
 
     replace "@VERSION@", project.version
     replaceIn "AKUtils.java"
