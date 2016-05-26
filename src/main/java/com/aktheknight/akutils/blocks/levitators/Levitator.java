@@ -13,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -80,8 +81,7 @@ public class Levitator extends Block implements ITileEntityProvider {
         EntityItem entityItem = new EntityItem(world, pos.getX() + dX, pos.getY() + dY, pos.getZ() + dZ,
                 stack.copy());
 
-        if (stack.hasTagCompound())
-        {
+        if (stack.hasTagCompound()) {
             entityItem.getEntityItem().setTagCompound((NBTTagCompound) stack.getTagCompound().copy());
         }
 
@@ -99,4 +99,5 @@ public class Levitator extends Block implements ITileEntityProvider {
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
         return new ArrayList<>();
     }
+
 }

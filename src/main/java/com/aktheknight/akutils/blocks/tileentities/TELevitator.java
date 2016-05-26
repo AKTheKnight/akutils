@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by alex_ on 31/03/2016.
  */
-public class TELevitator extends TileEntity implements ITickable{
+public class TELevitator extends TileEntity implements ITickable {
 
     public boolean mobLev = false;
     public boolean playerLev = false;
