@@ -3,8 +3,7 @@ package com.aktheknight.akutils.blocks.levitators;
 import com.aktheknight.akutils.AKUtils;
 import com.aktheknight.akutils.blocks.tileentities.TELevitator;
 import com.aktheknight.akutils.init.ModBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -25,7 +24,7 @@ import java.util.Random;
 /**
  * Created by alex_ on 31/03/2016.
  */
-public class Levitator extends Block implements ITileEntityProvider {
+public class Levitator extends BlockContainer {
     /**
      * sls
      * sps
