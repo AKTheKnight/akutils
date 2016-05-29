@@ -40,42 +40,46 @@ public class LevitatorRecipe extends ShapelessOreRecipe {
                     if (inv.getStackInSlot(slot) != null) {
                         if (inv.getStackInSlot(slot).getItem() == Items.PAPER) {
                             if (tag.hasKey("playerLev")
-                                    && tag.getBoolean("playerLev")) {
+                                    && tag.getBoolean("playerLev"))
                                 tag.removeTag("playerLev");
-                            }
                             if (tag.hasKey("mobLev")
-                                    && tag.getBoolean("mobLev")) {
+                                    && tag.getBoolean("mobLev"))
                                 tag.removeTag("mobLev");
-                            }
                             if (tag.hasKey("itemLev")
-                                    && tag.getBoolean("itemLev")) {
+                                    && tag.getBoolean("itemLev"))
                                 tag.removeTag("itemLev");
-                            }
+                            if (tag.hasKey("redstone")
+                                    && tag.getBoolean("redstone"))
+                                tag.removeTag("redstone");
 
                             result.setTagCompound(tag);
                             return result;
                         }
 
                         if (inv.getStackInSlot(slot).getItem() == Items.BONE) {
-                            if (!tag.hasKey("mobLev")) {
+                            if (!tag.hasKey("mobLev"))
                                 tag.setBoolean("mobLev", true);
-                            }
                             result.setTagCompound(tag);
                             return result;
                         }
 
                         if (inv.getStackInSlot(slot).getItem() == Items.ARMOR_STAND) {
-                            if (!tag.hasKey("playerLev")) {
+                            if (!tag.hasKey("playerLev"))
                                 tag.setBoolean("playerLev", true);
-                            }
                             result.setTagCompound(tag);
                             return result;
                         }
 
                         if (inv.getStackInSlot(slot).getItem() == Items.ITEM_FRAME) {
-                            if (!tag.hasKey("itemLev")) {
+                            if (!tag.hasKey("itemLev"))
                                 tag.setBoolean("itemLev", true);
-                            }
+                            result.setTagCompound(tag);
+                            return result;
+                        }
+
+                        if(inv.getStackInSlot(slot).getItem() == Items.REDSTONE) {
+                            if (!tag.hasKey("redstone"))
+                                tag.setBoolean("redstone", true);
                             result.setTagCompound(tag);
                             return result;
                         }

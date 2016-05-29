@@ -37,17 +37,17 @@ public class LevitatorItemBlock extends ItemBlock {
             TELevitator lev = (TELevitator) world.getTileEntity(pos);
             NBTTagCompound tag = stack.getTagCompound();
             if (tag.hasKey("playerLev")
-                    && tag.getBoolean("playerLev")) {
+                    && tag.getBoolean("playerLev"))
                 lev.playerLev = true;
-            }
             if (tag.hasKey("mobLev")
-                    && tag.getBoolean("mobLev")) {
+                    && tag.getBoolean("mobLev"))
                 lev.mobLev = true;
-            }
             if (tag.hasKey("itemLev")
-                    && tag.getBoolean("itemLev")) {
+                    && tag.getBoolean("itemLev"))
                 lev.itemLev = true;
-            }
+            if (tag.hasKey("redstone")
+                    && tag.getBoolean("redstone"))
+                lev.redstone = true;
         }
         return true;
     }
@@ -69,12 +69,19 @@ public class LevitatorItemBlock extends ItemBlock {
                     && tag.getBoolean("itemLev")) {
                 list.add("Levitates items");
             }
+            if (tag.hasKey("redstone")
+                    && tag.getBoolean("redstone")) {
+                list.add("Will lower things when redstone is applied");
+            }
         }
 
         if (!list.isEmpty()) {
             for (String s : list) {
                 tooltip.add(TextFormatting.GREEN + s);
             }
+        } else {
+            tooltip.add(TextFormatting.RED + "This won't do anything");
+            tooltip.add(TextFormatting.RED + "Add stuff to make it work");
         }
     }
 

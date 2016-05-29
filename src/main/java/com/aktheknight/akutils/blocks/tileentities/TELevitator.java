@@ -19,10 +19,11 @@ public class TELevitator extends TileEntity implements ITickable {
     public boolean mobLev = false;
     public boolean playerLev = false;
     public boolean itemLev = false;
+    public boolean redstone = false;
 
     void doLevitate(Entity entity, int blockY) {
         int entityY = entity.getPosition().getY();
-        if (!entity.isSneaking()) {
+        if (!entity.isSneaking() && hasRedstone()) {
             if (entityY > blockY) {
                 int dif = entityY - blockY;
                 if (dif > 6) {
@@ -53,6 +54,14 @@ public class TELevitator extends TileEntity implements ITickable {
 
         }
         entity.fallDistance = 0f;
+    }
+
+    public boolean hasRedstone() {
+        if (!redstone)
+            return true;
+        if (worldObj.isBlockPowered(pos))
+            return false;
+        return true;
     }
 
     @Override

@@ -93,5 +93,6 @@ public class ModRecipes {
         GameRegistry.addRecipe(new LevitatorRecipe(Items.BONE));
         GameRegistry.addRecipe(new LevitatorRecipe(Items.ARMOR_STAND));
         GameRegistry.addRecipe(new LevitatorRecipe(Items.ITEM_FRAME));
+		GameRegistry.addRecipe(new LevitatorRecipe(Items.REDSTONE));
 	}
 }

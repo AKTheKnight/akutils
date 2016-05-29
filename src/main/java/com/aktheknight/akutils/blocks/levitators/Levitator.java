@@ -13,9 +13,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -53,24 +52,7 @@ public class Levitator extends Block implements ITileEntityProvider {
 
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        ItemStack stack = new ItemStack(ModBlocks.levitator);
-        NBTTagCompound tag = new NBTTagCompound();
-        TELevitator lev = (TELevitator) world.getTileEntity(pos);
-        if (lev != null) {
-            if (lev.mobLev) {
-                tag.setBoolean("mobLev", true);
-            }
-            if (lev.playerLev) {
-                tag.setBoolean("playerLev", true);
-            }
-            if (lev.itemLev) {
-                tag.setBoolean("itemLev", true);
-            }
-        }
-        else {
-            System.out.println("Uh oh. Null tile?");
-        }
-        stack.setTagCompound(tag);
+        ItemStack stack = getStack((TELevitator) world.getTileEntity(pos));
 
         Random rand = new Random();
 
@@ -98,6 +80,33 @@ public class Levitator extends Block implements ITileEntityProvider {
     @Override
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
         return new ArrayList<>();
+    }
+
+    @Override
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+        return getStack((TELevitator) world.getTileEntity(pos));
+    }
+
+    ItemStack getStack(TELevitator lev) {
+        ItemStack stack = new ItemStack(ModBlocks.levitator);
+        NBTTagCompound tag = new NBTTagCompound();
+        if (lev != null) {
+            if (lev.mobLev)
+                tag.setBoolean("mobLev", true);
+            if (lev.playerLev)
+                tag.setBoolean("playerLev", true);
+            if (lev.itemLev)
+                tag.setBoolean("itemLev", true);
+            if (lev.redstone)
+                tag.setBoolean("redstone", true);
+        }
+        else {
+            System.out.println("Uh oh. Null tile?");
+        }
+
+        stack.setTagCompound(tag);
+
+        return stack;
     }
 
 }
